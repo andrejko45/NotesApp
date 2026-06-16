@@ -1,0 +1,7 @@
+# Ignoring .env file
+
+.env
+
+# Ignoring target directory
+
+target/
