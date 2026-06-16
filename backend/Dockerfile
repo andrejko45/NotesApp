@@ -6,6 +6,8 @@ WORKDIR /app
 
 COPY . .
 
+RUN sed -i 's/\r$//' mvnw
+
 RUN ./mvnw clean package -DskipTests
 
 RUN cp target/*.jar app.jar
