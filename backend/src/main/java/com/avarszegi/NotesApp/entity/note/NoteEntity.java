@@ -44,7 +44,6 @@ public class NoteEntity {
     // V DB bude spojovacia tabuľka s názvom tags_on_notes
     // Časť note_id je v NoteEntity a je prvá časť kompozitného kľúča
     // Časť tag_id je v TagEntity a je druhá časť kompozitnéhp kľúča
-    //
 
     @ManyToMany
             @JoinTable(
