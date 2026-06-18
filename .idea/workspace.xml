@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9abf553e-89d5-4b30-ad93-4c3803a40600" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/avarszegi/NotesApp/entity/note/NoteEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/avarszegi/NotesApp/entity/note/NoteEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/bug.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/bug.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +17,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Dockerfile" />
-        <option value="Class" />
+        <option value="Record" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
