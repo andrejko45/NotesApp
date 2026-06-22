@@ -6,6 +6,7 @@ import com.avarszegi.NotesApp.repository.user.UserRepository;
 import com.avarszegi.NotesApp.security.authentication.dto.LoginRequest;
 import com.avarszegi.NotesApp.security.authentication.dto.LoginResponse;
 import com.avarszegi.NotesApp.security.authentication.service.AuthenticationService;
+import com.avarszegi.NotesApp.security.jwt.JwtService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -25,6 +26,8 @@ public class AuthServiceImpl implements AuthenticationService {
 
     private final UserRepository userRepository;
 
+    private final JwtService jwtService;
+
     @Value("${security.jwt.secret-key}")
     private String secretKey;
 
@@ -39,11 +42,10 @@ public class AuthServiceImpl implements AuthenticationService {
 
         if(BCrypt.checkpw(request.password(), user.get().getPasswdH())) {
 
-            Date dateExp = new Date(System.currentTimeMillis() + 3600 * 1000);
-            // Generate token
-            SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey));
-            String jws = Jwts.builder().subject(request.name()).expiration(dateExp).signWith(key).compact();
-            return new LoginResponse(user.get().getId(), jws, dateExp.getTime());
+            Date expiresIn = new Date(System.currentTimeMillis() * 1000 + 3600);
+
+            return new LoginResponse(user.get().getId(), jwtService.generateToken(request.name(), expiresIn), expiresIn.getTime());
+
         }
         else {
             throw new ErrorResponseException("Invalid username or password !");
